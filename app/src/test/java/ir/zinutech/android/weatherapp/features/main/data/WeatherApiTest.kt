@@ -8,8 +8,7 @@ import ir.zinutech.android.weatherapp.features.main.domain.Metrics
 import ir.zinutech.android.weatherapp.features.utils.*
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockWebServer
-import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.CoreMatchers.notNullValue
+import org.hamcrest.CoreMatchers.*
 import org.junit.After
 import org.junit.Assert.assertThat
 import org.junit.Before
@@ -66,13 +65,13 @@ class WeatherApiTest {
         )
 
         assertThat(weatherForecast, notNullValue())
-        assertThat(weatherForecast?.latitude, `is`(STOCKHOLM_LATITUDE))
-        assertThat(weatherForecast?.longitude, `is`(STOCKHOLM_LONGITUDE))
-        assertThat(weatherForecast?.timezone, `is`(STOCKHOLM_TIME_ZONE))
+        assertThat(weatherForecast?.latitude, equalTo(STOCKHOLM_LATITUDE))
+        assertThat(weatherForecast?.longitude, equalTo(STOCKHOLM_LONGITUDE))
+        assertThat(weatherForecast?.timezone, equalTo(STOCKHOLM_TIME_ZONE))
         assertThat(weatherForecast?.currently, notNullValue())
-        assertThat(weatherForecast?.currently?.time, `is`(Date(TIME_IN_MILLIS)))
-        assertThat(weatherForecast?.currently?.summary, `is`(SUMMARY))
-        assertThat(weatherForecast?.currently?.temperature, `is`(TEMPERATURE))
-        assertThat(weatherForecast?.currently?.apparentTemperature, `is`(APPARENT_TEMPERATURE))
+        assertThat(weatherForecast?.currently?.time, equalTo(Date(TIME_IN_MILLIS)))
+        assertThat(weatherForecast?.currently?.summary, equalTo(SUMMARY))
+        assertThat(weatherForecast?.currently?.temperature, equalTo(TEMPERATURE))
+        assertThat(weatherForecast?.currently?.apparentTemperature, equalTo(APPARENT_TEMPERATURE))
     }
 }
